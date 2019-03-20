@@ -159,7 +159,7 @@ func matchPackages(pattern string) []string {
 	cmd := filepath.Join(goroot, "src/cmd") + string(filepath.Separator)
 	_ = filepath.Walk(cmd, func(path string, fi os.FileInfo, err error) error {
 		if err != nil || !fi.IsDir() || path == cmd {
-			return nil
+			return nil // return nil
 		}
 		name := path[len(cmd):]
 		if !treeCanMatch(name) {
@@ -201,7 +201,7 @@ func matchPackages(pattern string) []string {
 		}
 		_ = filepath.Walk(root, func(path string, fi os.FileInfo, err error) error {
 			if err != nil || !fi.IsDir() || path == src {
-				return nil
+				return nil // return nil
 			}
 
 			// Avoid .foo, _foo, and testdata directory trees.
@@ -271,7 +271,7 @@ func matchPackagesInFS(pattern string) []string {
 	var pkgs []string
 	_ = filepath.Walk(dir, func(path string, fi os.FileInfo, err error) error {
 		if err != nil || !fi.IsDir() {
-			return nil
+			return nil // return nil
 		}
 		if path == dir {
 			// filepath.Walk starts at dir and recurses. For the recursive case,
